@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
-project(ArgoCPP)
+project(ArgoCPP VERSION 0.0.1)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(ArgoCPP main.cpp)
+add_executable(ArgoCPP src/main.cpp)
