@@ -1,8 +1,13 @@
 #include <iostream>
+#include <stdio.h>
 #include <GLFW/glfw3.h>
 
-int main() {
-    std::cout << "Hello World" << std::endl;
+#include "ArgoConfig.h"
+
+int main(int argc, char* argv[]) {
+    std::cout << argv[0] << " - Version " << ARGO_VERSION_MAJOR
+    << "." << ARGO_VERSION_MINOR << "."
+    << ARGO_VERSION_PATCH << std::endl;
 
     GLFWwindow *window;
 
