@@ -28,6 +28,7 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/lib/GLFW/CMakeLists.txt")
     message(FATAL_ERROR "The GLFW submodule was not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 endif()
 
+find_package(OpenGL 3 REQUIRED)
 
 # GLFW
 add_subdirectory(lib/GLFW)
@@ -35,3 +36,24 @@ target_include_directories(${PROJECT_NAME} PUBLIC lib/GLFW/include)
 target_link_directories(${PROJECT_NAME} PRIVATE lib/GLFW/src)
 target_link_libraries(${PROJECT_NAME} glfw)
 
+#imgui
+add_library(imgui_glfw STATIC
+        lib/imgui/imgui.cpp
+        lib/imgui/imgui_draw.cpp
+        lib/imgui/imgui_demo.cpp
+        lib/imgui/imgui_widgets.cpp
+        lib/imgui/imgui_tables.cpp
+        lib/imgui/backends/imgui_impl_glfw.cpp
+        lib/imgui/backends/imgui_impl_opengl3.cpp
+        )
+
+target_link_libraries(imgui_glfw PUBLIC glfw ${OPENGL_LIBRARIES})
+
+target_include_directories(imgui_glfw
+        PUBLIC
+        ${CMAKE_CURRENT_LIST_DIR}/lib/imgui
+        ${CMAKE_CURRENT_LIST_DIR}/lib/imgui/backends
+        ${CMAKE_CURRENT_LIST_DIR}/lib/imgui/examples
+        )
+
+target_link_libraries(${PROJECT_NAME} imgui_glfw)
