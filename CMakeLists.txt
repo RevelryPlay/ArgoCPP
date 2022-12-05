@@ -7,6 +7,9 @@ configure_file(ArgoConfig.h.in ArgoConfig.h)
 
 add_executable(${PROJECT_NAME} src/main.cpp ArgoConfig.h.in)
 
+# Create an interface library to attach any external dependencies to
+add_library(external_libs INTERFACE)
+
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 
 find_package(Git QUIET)
@@ -32,9 +35,8 @@ find_package(OpenGL 3 REQUIRED)
 
 # GLFW
 add_subdirectory(lib/GLFW)
-target_include_directories(${PROJECT_NAME} PUBLIC lib/GLFW/include)
-target_link_directories(${PROJECT_NAME} PRIVATE lib/GLFW/src)
-target_link_libraries(${PROJECT_NAME} glfw)
+target_include_directories(external_libs INTERFACE lib/GLFW/include)
+target_link_directories(external_libs INTERFACE lib/GLFW/src)
 
 #imgui
 add_library(imgui_glfw STATIC
@@ -56,4 +58,9 @@ target_include_directories(imgui_glfw
         ${CMAKE_CURRENT_LIST_DIR}/lib/imgui/examples
         )
 
-target_link_libraries(${PROJECT_NAME} imgui_glfw)
+target_link_libraries(external_libs INTERFACE
+        glfw
+        imgui_glfw)
+
+# Link our external libraries into ${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PRIVATE external_libs)
