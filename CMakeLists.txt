@@ -2,10 +2,19 @@ cmake_minimum_required(VERSION 3.24)
 project(ArgoCPP VERSION 0.0.1)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# 1. `-Wall` enable all compilation warnings
+#set(CMAKE_CXX_FLAGS "-Wall")
 
 configure_file(ArgoConfig.h.in ArgoConfig.h)
 
-add_executable(${PROJECT_NAME} src/main.cpp ArgoConfig.h.in)
+file(GLOB CPP_SOURCES
+    "${PROJECT_SOURCE_DIR}/src/*.cpp"
+    "${PROJECT_SOURCE_DIR}/src/**/*.cpp"
+)
+
+add_executable(${PROJECT_NAME} ${CPP_SOURCES} ArgoConfig.h.in)
 
 # Create an interface library to attach any external dependencies to
 add_library(external_libs INTERFACE)
@@ -22,7 +31,7 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                 RESULT_VARIABLE GIT_SUBMOD_RESULT)
         if(NOT GIT_SUBMOD_RESULT EQUAL "0")
-            message(FATAL_ERROR "git submodule update --init --recursive failed with ${GIT_SUBMOD_RESULT}, please checkout submodules")
+            message(WARNING "git submodule update --init --recursive failed with ${GIT_SUBMOD_RESULT}. You may need to checkout submodules manually.")
         endif()
     endif()
 endif()
