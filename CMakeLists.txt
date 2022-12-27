@@ -29,13 +29,13 @@ add_library(external_libs INTERFACE)
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 
 # Fetch submodules with git
-include(git.cmake)
+include(cmake/git.cmake)
 
 # Add any graphic utilities / libraries
-include(graphics.cmake)
+include(cmake/graphics.cmake)
 
 # Link our external libraries into ${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} PRIVATE external_libs)
 
 # Run CTests
-include(ctest.cmake)
+include(cmake/ctest.cmake)

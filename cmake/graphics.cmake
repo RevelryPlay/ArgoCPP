@@ -20,9 +20,9 @@ target_link_libraries(imgui_glfw PUBLIC glfw ${OPENGL_LIBRARIES})
 
 target_include_directories(imgui_glfw
         PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/lib/imgui
-        ${CMAKE_CURRENT_LIST_DIR}/lib/imgui/backends
-        ${CMAKE_CURRENT_LIST_DIR}/lib/imgui/examples
+        lib/imgui
+        lib/imgui/backends
+        lib/imgui/examples
         )
 
 target_link_libraries(external_libs INTERFACE
