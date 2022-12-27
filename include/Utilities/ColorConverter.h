@@ -43,9 +43,6 @@ CommonColor ConvertColor(CommonColor rgba) {
 CommonColor ConvertColor(unsigned int hex) {
     CommonColor rgba = CommonColor();
 
-    fprintf(stdout, "Color:  r: %f, g: %f, b: %f, a: %f", ((hex >> 24) & 0xFF) / 255.0, ((hex >> 16) & 0xFF) / 255.0,
-            ((hex >> 8) & 0xFF) / 255.0, ((hex) & 0xFF) / 255.0);
-
     rgba.red = ((hex >> 24) & 0xFF) / 255.0;
     rgba.green = ((hex >> 16) & 0xFF) / 255.0;
     rgba.blue = ((hex >> 8) & 0xFF) / 255.0;
