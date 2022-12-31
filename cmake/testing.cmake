@@ -1,7 +1,5 @@
 include(CTest)
 
-add_subdirectory(external/googletest)
-
 # BUILD_TESTING variable is created by include(CTest)
 # It is set to ON by default
 if (BUILD_TESTING)
@@ -17,6 +15,8 @@ if (BUILD_TESTING)
             include/Utilities
             )
 
+    add_subdirectory(external/googletest)
+    
     target_link_libraries(${PROJECT_NAME}-tests PRIVATE GTest::gtest_main)
 
     include(GoogleTest)
