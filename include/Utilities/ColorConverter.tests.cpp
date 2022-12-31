@@ -57,3 +57,51 @@ TEST(ColorConverter, ColorFromHexSoftBlue) {
     EXPECT_FLOAT_EQ(color.blue, 0.74901962f);
     EXPECT_FLOAT_EQ(color.alpha, 0.78823531f);
 }
+
+TEST(ColorConverter, ColorFromRGBABlack) {
+    CommonColor color = ConvertColor({0,0,0});
+    EXPECT_FLOAT_EQ(color.red, 0.0f);
+    EXPECT_FLOAT_EQ(color.green, 0.0f);
+    EXPECT_FLOAT_EQ(color.blue, 0.0f);
+    EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
+
+TEST(ColorConverter, ColorFromRGBAWhite) {
+    CommonColor color = ConvertColor({255,255,255});
+    EXPECT_FLOAT_EQ(color.red, 1.0f);
+    EXPECT_FLOAT_EQ(color.green, 1.0f);
+    EXPECT_FLOAT_EQ(color.blue, 1.0f);
+    EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
+
+TEST(ColorConverter, ColorFromRGBARed) {
+    CommonColor color = ConvertColor({255,0,0});
+    EXPECT_FLOAT_EQ(color.red, 1.0f);
+    EXPECT_FLOAT_EQ(color.green, 0.0f);
+    EXPECT_FLOAT_EQ(color.blue, 0.0f);
+    EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
+
+TEST(ColorConverter, ColorFromRGBAGreen) {
+    CommonColor color = ConvertColor({0,255,0});
+    EXPECT_FLOAT_EQ(color.red, 0.0f);
+    EXPECT_FLOAT_EQ(color.green, 1.0f);
+    EXPECT_FLOAT_EQ(color.blue, 0.0f);
+    EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
+
+TEST(ColorConverter, ColorFromRGBABlue) {
+    CommonColor color = ConvertColor({0,0,255});
+    EXPECT_FLOAT_EQ(color.red, 0.0f);
+    EXPECT_FLOAT_EQ(color.green, 0.0f);
+    EXPECT_FLOAT_EQ(color.blue, 1.0f);
+    EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
+
+TEST(ColorConverter, ColorFromRGBALimeGreen) {
+    CommonColor color = ConvertColor({133, 208, 79, 1});
+    EXPECT_FLOAT_EQ(color.red, 0.52156866);
+    EXPECT_FLOAT_EQ(color.green, 0.81568629);
+    EXPECT_FLOAT_EQ(color.blue, 0.30980393);
+    EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
