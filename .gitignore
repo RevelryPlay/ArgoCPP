@@ -31,6 +31,9 @@
 *.out
 *.app
 
+# Dumpfiles
+*.stackdump
+
 # Cmake
 [Bb][Uu][Ii][Ll][Dd]/
 [Oo][Uu][Tt]/

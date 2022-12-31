@@ -1,6 +1,21 @@
 #ifndef ARGOCPP_COLOR_CONVERTER_H
 #define ARGOCPP_COLOR_CONVERTER_H
 
+struct Vec4 {
+public:
+    float x;
+    float y;
+    float z;
+    float w;
+
+    Vec4(float x, float y, float z, float w) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+    }
+};
+
 /**
  * Generic color that can be used throughout Argo
  */
@@ -15,8 +30,8 @@ public:
      * Returns an ImVec4 for compatibility with Dear ImGui
      * @return ImVec4
      */
-    ImVec4 ToImVec4() const {
-        return ImVec4(
+    Vec4 ToVec4() const {
+        return Vec4(
                 red,
                 green,
                 blue,

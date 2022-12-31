@@ -82,8 +82,8 @@ int main(int, char**)
 
     // Our state
 //    ImVec4 clear_color = ImVec4(0.29f, 0.25f, 0.56f, 1.00f);
-//    ImVec4 clear_color = ConvertColor({133, 208, 79, 1}).ToImVec4();
-    ImVec4 clear_color = ConvertColor(0x1f7fbfff).ToImVec4();
+//    vec4 clear_color = ConvertColor({133, 208, 79, 1}).ToVec4();
+    Vec4 clear_color = ConvertColor(0x1f7fbfff).ToVec4();
 
     // Main loop
     while (!glfwWindowShouldClose(window))

@@ -38,4 +38,4 @@ include(cmake/graphics.cmake)
 target_link_libraries(${PROJECT_NAME} PRIVATE external_libs)
 
 # Run CTests
-include(cmake/ctest.cmake)
+include(cmake/testing.cmake)
