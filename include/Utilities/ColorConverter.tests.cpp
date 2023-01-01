@@ -99,9 +99,17 @@ TEST(ColorConverter, ColorFromRGBABlue) {
 }
 
 TEST(ColorConverter, ColorFromRGBALimeGreen) {
-    CommonColor color = ConvertColor({133, 208, 79, 1});
+    CommonColor color = ConvertColor({133, 208, 79});
     EXPECT_FLOAT_EQ(color.red, 0.52156866);
     EXPECT_FLOAT_EQ(color.green, 0.81568629);
     EXPECT_FLOAT_EQ(color.blue, 0.30980393);
     EXPECT_FLOAT_EQ(color.alpha, 1.0f);
+}
+
+TEST(ColorConverter, ColorFromRGBAAlpha) {
+    CommonColor color = ConvertColor({51, 51, 51, 0.45});
+    EXPECT_FLOAT_EQ(color.red, 0.2);
+    EXPECT_FLOAT_EQ(color.green, 0.2);
+    EXPECT_FLOAT_EQ(color.blue, 0.2);
+    EXPECT_FLOAT_EQ(color.alpha, 0.45f);
 }
