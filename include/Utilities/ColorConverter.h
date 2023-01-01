@@ -27,8 +27,8 @@ public:
     float alpha = 1.0f;
 
     /**
-     * Returns an ImVec4 for compatibility with Dear ImGui
-     * @return ImVec4
+     * Returns an Vec4 for compatibility with other libraries
+     * @return Vec4
      */
     Vec4 ToVec4() const {
         return Vec4(

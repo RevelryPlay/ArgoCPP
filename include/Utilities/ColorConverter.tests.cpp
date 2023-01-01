@@ -113,3 +113,11 @@ TEST(ColorConverter, ColorFromRGBAAlpha) {
     EXPECT_FLOAT_EQ(color.blue, 0.2);
     EXPECT_FLOAT_EQ(color.alpha, 0.45f);
 }
+
+TEST(ColorConverter, Vec4FromCommonColor) {
+    Vec4 color = ConvertColor({133, 208, 79}).ToVec4();
+    EXPECT_FLOAT_EQ(color.x, 0.52156866);
+    EXPECT_FLOAT_EQ(color.y, 0.81568629);
+    EXPECT_FLOAT_EQ(color.z, 0.30980393);
+    EXPECT_FLOAT_EQ(color.w, 1.0f);
+}
