@@ -13,8 +13,7 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-int main(int, char**)
-{
+int InitImguiWindow() {
     // Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -151,4 +150,29 @@ int main(int, char**)
     glfwTerminate();
 
     return 0;
+}
+
+int main(int, char**)
+{
+    // Get System Modules
+    // Base Error Handlers
+    // OS Specific Modules
+    // File System Utilities
+    // Loggers
+    // Serializers
+    // Asset Loaders
+    // Save / Load
+    // Settings Handler
+
+    // Graphic Utilities
+    // Audio Utilities
+    // Input Utilities
+    // Networking Utilities
+
+    // Get Registered Extensions
+    // Handle Preloads
+    // Core Event Loop
+
+    // This is a placeholder to load a generic IMGui window.
+    return InitImguiWindow();
 }
