@@ -1,44 +1,8 @@
 #ifndef ARGOCPP_COLOR_CONVERTER_HPP
 #define ARGOCPP_COLOR_CONVERTER_HPP
 
-struct Vec4 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-
-    Vec4(float x, float y, float z, float w) {
-        this->x = x;
-        this->y = y;
-        this->z = z;
-        this->w = w;
-    }
-};
-
-/**
- * Generic color that can be used throughout Argo
- */
-class CommonColor {
-public:
-    float red;
-    float green;
-    float blue;
-    float alpha = 1.0f;
-
-    /**
-     * Returns an Vec4 for compatibility with other libraries
-     * @return Vec4
-     */
-    Vec4 ToVec4() const {
-        return Vec4(
-                red,
-                green,
-                blue,
-                alpha
-        );
-    }
-};
+#include "Vec4.hpp"
+#include "CommonColor.hpp"
 
 /**
  * Creates a CommonColor from an RGBA object

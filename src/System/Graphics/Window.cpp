@@ -11,6 +11,7 @@ int Window::Init(int width, int height, const char *title) {
 
     /* Create a windowed mode window and its OpenGL context */
     this->window = glfwCreateWindow(width, height, title, NULL, NULL);
+    this->clearColor = ConvertColor(0x1f7fbfff);
 
     if (!this->window) {
         glfwTerminate();
@@ -48,8 +49,10 @@ void Window::RenderFrame() {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        CommonColor clear_color = ConvertColor(0x1f7fbfff);
-        glClearColor(clear_color.red, clear_color.green, clear_color.blue, clear_color.alpha);
+        glClearColor(this->clearColor.red,
+                     this->clearColor.green,
+                     this->clearColor.blue,
+                     this->clearColor.alpha);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(this->window);

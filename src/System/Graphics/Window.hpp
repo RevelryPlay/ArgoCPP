@@ -2,6 +2,7 @@
 #define ARGOCPP_WINDOW_HPP
 
 #include <iostream>
+#include "CommonColor.hpp"
 
 class Window {
 public:
@@ -17,8 +18,7 @@ private:
     int drawFrameCount = 0;
     double lastFrameTime;
     double lastFPSTime;
-
-
+    CommonColor clearColor = CommonColor();
 };
 
 #endif //ARGOCPP_WINDOW_HPP
