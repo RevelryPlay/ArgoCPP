@@ -26,7 +26,7 @@ int main(int, char**)
     while (game.IsRunning())
     {
         game.Update();
-//        game.LateUpdate();
-//        game.Draw();
+        game.LateUpdate();
+        game.Draw();
     }
 }

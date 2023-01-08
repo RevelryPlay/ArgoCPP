@@ -8,10 +8,10 @@ Game::Game() : window() {
 void Game::Update() {
     this->window->Update();
 }
-//
-//void Game::LateUpdate() {}
-//void Game::Draw() {}
-//
+
+void Game::LateUpdate() {}
+void Game::Draw() {}
+
 bool Game::IsRunning() {
     return this->window->IsOpen();
 }
