@@ -1,5 +1,5 @@
-#ifndef ARGOCPP_COLOR_CONVERTER_H
-#define ARGOCPP_COLOR_CONVERTER_H
+#ifndef ARGOCPP_COLOR_CONVERTER_HPP
+#define ARGOCPP_COLOR_CONVERTER_HPP
 
 struct Vec4 {
 public:
@@ -66,4 +66,4 @@ CommonColor ConvertColor(unsigned int hex) {
     return rgba;
 }
 
-#endif //ARGOCPP_COLOR_CONVERTER_H
+#endif //ARGOCPP_COLOR_CONVERTER_HPP

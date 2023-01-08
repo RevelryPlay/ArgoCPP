@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "ColorConverter.h"
+#include "ColorConverter.hpp"
 
 TEST(ColorConverter, ColorFromHexBlack) {
     CommonColor color = ConvertColor(0x00000000);
