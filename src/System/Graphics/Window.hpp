@@ -6,7 +6,7 @@
 
 class Window {
 public:
-    int Init(int width, int height, const char *title);
+    Window(int width, int height, const char *title);
     void Update();
     void RenderFrame();
     void Close();

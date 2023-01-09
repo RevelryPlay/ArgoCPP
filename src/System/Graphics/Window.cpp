@@ -2,10 +2,10 @@
 #include "Window.hpp"
 #include "ColorConverter.hpp"
 
-int Window::Init(int width, int height, const char *title) {
+Window::Window(int width, int height, const char *title) {
     /* Initialize the library */
     if (!glfwInit())
-        return -1;
+        return;
 
     glfwSetTime(0);
 
@@ -15,13 +15,11 @@ int Window::Init(int width, int height, const char *title) {
 
     if (!this->window) {
         glfwTerminate();
-        return -1;
+        return;
     }
 
     /* Make the window's context current */
     glfwMakeContextCurrent(this->window);
-
-    return 1;
 }
 
 void Window::Update() {
@@ -62,7 +60,7 @@ void Window::RenderFrame() {
 
         return;
     }
-//
+
 //    GetFPS();
 }
 
