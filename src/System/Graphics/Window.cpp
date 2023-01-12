@@ -60,8 +60,6 @@ void Window::RenderFrame() {
 
         return;
     }
-
-//    GetFPS();
 }
 
 int Window::GetFPS() {

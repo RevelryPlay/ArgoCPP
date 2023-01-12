@@ -1,5 +1,4 @@
-#ifndef ARGOCPP_COMMON_COLOR_HPP
-#define ARGOCPP_COMMON_COLOR_HPP
+#pragma once
 
 #include "Vec4.hpp"
 
@@ -26,5 +25,3 @@ public:
         );
     }
 };
-
-#endif //ARGOCPP_COMMON_COLOR_HPP

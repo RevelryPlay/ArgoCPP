@@ -1,5 +1,4 @@
-#ifndef ARGOCPP_WINDOW_HPP
-#define ARGOCPP_WINDOW_HPP
+#pragma once
 
 #include <iostream>
 #include "CommonColor.hpp"
@@ -20,5 +19,3 @@ private:
     double lastFPSTime;
     CommonColor clearColor = CommonColor();
 };
-
-#endif //ARGOCPP_WINDOW_HPP

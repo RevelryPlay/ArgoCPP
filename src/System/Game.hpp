@@ -1,5 +1,4 @@
-#ifndef ARGOCPP_GAME_HPP
-#define ARGOCPP_GAME_HPP
+#pragma once
 
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -18,5 +17,3 @@ public:
 private:
     Window* window;
 };
-
-#endif //ARGOCPP_GAME_HPP

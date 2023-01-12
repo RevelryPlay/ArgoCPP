@@ -6,6 +6,7 @@ Game::Game() : window() {
 
 void Game::Update() {
     this->window->Update();
+//    this->window->GetFPS();
 }
 
 void Game::LateUpdate() {}

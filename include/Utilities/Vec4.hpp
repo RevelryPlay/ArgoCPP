@@ -1,6 +1,4 @@
-#ifndef ARGOCPP_VEC4_HPP
-#define ARGOCPP_VEC4_HPP
-
+#pragma once
 struct Vec4 {
 public:
     float x;
@@ -15,5 +13,3 @@ public:
         this->w = w;
     }
 };
-
-#endif //ARGOCPP_VEC4_HPP

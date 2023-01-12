@@ -1,5 +1,4 @@
-#ifndef ARGOCPP_COLOR_CONVERTER_HPP
-#define ARGOCPP_COLOR_CONVERTER_HPP
+#pragma once
 
 #include "Vec4.hpp"
 #include "CommonColor.hpp"
@@ -29,5 +28,3 @@ CommonColor ConvertColor(unsigned int hex) {
 
     return rgba;
 }
-
-#endif //ARGOCPP_COLOR_CONVERTER_HPP
