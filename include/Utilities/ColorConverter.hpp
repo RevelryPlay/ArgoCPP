@@ -6,7 +6,9 @@
 /**
  * Creates a CommonColor from an RGBA object
  *
- * @param rgba - { red, green, blue, alpha }; red, green, blue values are between 0 and 255; alpha is a float between 0 and 1
+ * @param rgba - { red, green, blue, alpha };
+ * red, green, blue values are between 0 and 255;
+ * alpha is a float between 0 and 1
  * @return CommonColor
  */
 CommonColor ConvertColor(CommonColor rgba) {
