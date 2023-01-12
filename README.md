@@ -38,7 +38,7 @@ ctest
 ### Using the Wiki
 ### Changing the code-base
 ### Platform support
-Currently, this has only been tested under Windows 11. <br>
+Currently, this has only been tested under Windows 11, and MacOS 13.2 on an M1 chip. <br>
 This project is intended to run under Windows, Mac, or Linux.
 
 ## Terms and License
