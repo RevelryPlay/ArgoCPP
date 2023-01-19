@@ -3,7 +3,7 @@
 
 int main(int, char**)
 {
-    Game game = Game();
+    Argo::Game game = Argo::Game();
 
     // Get System Modules
     // Base Error Handlers

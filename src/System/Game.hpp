@@ -5,15 +5,17 @@
 
 #include "Graphics/Window.hpp"
 
-class Game {
-public:
-    Game();
+namespace Argo {
+    class Game {
+    public:
+        Game();
 
-    void Update();
-    void LateUpdate();
-    void Draw();
-    bool IsRunning();
+        void Update();
+        void LateUpdate();
+        void Draw();
+        bool IsRunning();
 
-private:
-    Window* window;
-};
+    private:
+        Window* window;
+    };
+}

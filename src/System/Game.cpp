@@ -1,17 +1,19 @@
 #include "Game.hpp"
 
-Game::Game() : window() {
-    this->window = new Window(1024, 768, "Brave New World");
-}
+namespace Argo {
+    Game::Game() : window() {
+        this->window = new Window(1024, 768, "Hello World");
+    }
 
-void Game::Update() {
-    this->window->Update();
-//    this->window->GetFPS();
-}
+    void Game::Update() {
+        this->window->Update();
+//        this->window->GetFPS();
+    }
 
-void Game::LateUpdate() {}
-void Game::Draw() {}
+    void Game::LateUpdate() {}
+    void Game::Draw() {}
 
-bool Game::IsRunning() {
-    return this->window->IsOpen();
+    bool Game::IsRunning() {
+        return this->window->IsOpen();
+    }
 }
