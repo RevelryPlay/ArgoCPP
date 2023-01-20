@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Vec4.hpp"
 #include "CommonColor.hpp"
 
 namespace Argo {
@@ -34,4 +33,3 @@ namespace Argo {
         }
     }
 }
-

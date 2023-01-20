@@ -1,18 +1,23 @@
 #pragma once
 
 #include <iostream>
+#include <GLFW/glfw3.h>
 #include "CommonColor.hpp"
 
 namespace Argo {
     class Window {
     public:
+        Window();
         Window(int width, int height, const char *title);
+        ~Window();
+
         void Update();
         void RenderFrame();
         void Close();
         bool IsOpen();
         int GetFPS();
-    private:
+
+    protected:
         GLFWwindow* window;
         int frameRateCap = 120;
         int drawFrameCount = 0;

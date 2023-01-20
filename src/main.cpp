@@ -29,4 +29,6 @@ int main(int, char**)
         game.LateUpdate();
         game.Draw();
     }
+
+    game.Close();
 }

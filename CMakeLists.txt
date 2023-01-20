@@ -12,13 +12,13 @@ configure_file(ArgoConfig.h.in ArgoConfig.h)
 
 # Include any project source files
 file(GLOB CPP_SOURCES
-    "${PROJECT_SOURCE_DIR}/src/*.cpp"
-    "${PROJECT_SOURCE_DIR}/src/*.hpp"
-    "${PROJECT_SOURCE_DIR}/src/**/*.cpp"
-    "${PROJECT_SOURCE_DIR}/src/**/*.hpp"
-    "${PROJECT_SOURCE_DIR}/src/**/**/*.cpp"
-    "${PROJECT_SOURCE_DIR}/src/**/**/*.hpp"
-)
+        "${PROJECT_SOURCE_DIR}/src/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/*.hpp"
+        "${PROJECT_SOURCE_DIR}/src/**/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/**/*.hpp"
+        "${PROJECT_SOURCE_DIR}/src/**/**/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/**/**/*.hpp"
+        )
 
 include_directories(${PROJECT_NAME}
         include

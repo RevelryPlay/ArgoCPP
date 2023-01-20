@@ -1,8 +1,13 @@
-#include <GLFW/glfw3.h>
+#pragma once
+
 #include "Window.hpp"
 #include "ColorConverter.hpp"
 
 namespace Argo {
+    Window::Window() {
+        Window(800, 600, "");
+    }
+
     Window::Window(int width, int height, const char *title) {
         /* Initialize the library */
         if (!glfwInit())
@@ -77,6 +82,10 @@ namespace Argo {
         }
 
         return drawFrameCount;
+    }
+
+    Window::~Window() {
+        Close();
     }
 
     void Window::Close() {
