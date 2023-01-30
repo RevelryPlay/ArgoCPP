@@ -5,6 +5,7 @@
 namespace Argo {
     Game::Game() : window() {
         this->window = new Window(1024, 768, "Hello World");
+//        this->window = new WindowImGUI(1024, 768, "Hello World");
     }
 
     void Game::Update() {

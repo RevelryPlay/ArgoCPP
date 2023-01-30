@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Graphics/Window.hpp"
+//#include "Graphics/WindowImGUI.hpp"
 
 namespace Argo {
     class Game {
@@ -18,5 +19,6 @@ namespace Argo {
 
     private:
         Window* window;
+//        WindowImGUI* window;
     };
 }

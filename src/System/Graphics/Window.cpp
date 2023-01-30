@@ -22,7 +22,7 @@ namespace Argo {
 
         /* Create a windowed mode window and its OpenGL context */
         this->window = glfwCreateWindow(width, height, title, NULL, NULL);
-        this->clearColor = Argo::Utilities::ConvertColor(0x1f7fbfff);
+        this->clearColor = Utilities::ConvertColor(0x1f7fbfff);
 
         if (!this->window) {
             glfwTerminate();
