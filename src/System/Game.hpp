@@ -3,7 +3,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-#include "Graphics/WindowImGUI.hpp"
+#include "Graphics/Window.hpp"
+//#include "Graphics/WindowImGUI.hpp"
 
 namespace Argo {
     class Game {
@@ -17,6 +18,7 @@ namespace Argo {
         void Close();
 
     private:
-        WindowImGUI* window;
+        Window* window;
+//        WindowImGUI* window;
     };
 }

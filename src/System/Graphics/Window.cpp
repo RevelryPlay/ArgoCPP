@@ -3,21 +3,26 @@
 #include "Window.hpp"
 #include "ColorConverter.hpp"
 
+#include "Image.hpp"
+
 namespace Argo {
     Window::Window() {
         Window(800, 600, "");
     }
 
-    Window::Window(int width, int height, const char *title) {
+    Window::Window(double width, double height, const char *title) {
         /* Initialize the library */
         if (!glfwInit())
             return;
 
         glfwSetTime(0);
 
+        this->width = &width;
+        this->height = &height;
+
         /* Create a windowed mode window and its OpenGL context */
         this->window = glfwCreateWindow(width, height, title, NULL, NULL);
-        this->clearColor = Argo::Utilities::ConvertColor(0x1f7fbfff);
+        this->clearColor = Utilities::ConvertColor(0x1f7fbfff);
 
         if (!this->window) {
             glfwTerminate();
@@ -34,11 +39,11 @@ namespace Argo {
         }
 
         if (glfwWindowShouldClose(this->window)) {
-            this->Close();
+            Close();
             return;
         }
 
-        this->RenderFrame();
+        RenderFrame();
     }
 
 // This will limit render calls to a defined framerate
@@ -57,6 +62,15 @@ namespace Argo {
                          this->clearColor.green,
                          this->clearColor.blue,
                          this->clearColor.alpha);
+
+            glOrtho(0, *this->width, 0, *this->height, -1, 1);
+
+
+//            Image* image = new Image("resources/viking.png");
+
+
+
+
 
             /* Swap front and back buffers */
             glfwSwapBuffers(this->window);

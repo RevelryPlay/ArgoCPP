@@ -5,6 +5,13 @@ add_subdirectory(external/GLFW)
 target_include_directories(external_libs INTERFACE external/GLFW/include)
 target_link_directories(external_libs INTERFACE external/GLFW/src)
 
+# stb_image library
+target_include_directories(external_libs INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/external/stb)
+
+# GLM
+add_subdirectory(external/glm)
+target_link_libraries(external_libs INTERFACE glm)
+
 #imgui
 add_library(imgui_glfw STATIC
         external/imgui/imgui.cpp
@@ -28,3 +35,8 @@ target_include_directories(imgui_glfw
 target_link_libraries(external_libs INTERFACE
         glfw
         imgui_glfw)
+
+# Copy resource files
+file(GLOB IMG_SRC resources/**.png)
+file(COPY ${IMG_SRC} DESTINATION ${CMAKE_BINARY_DIR}/resources)
+
