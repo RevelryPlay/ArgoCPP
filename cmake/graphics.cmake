@@ -1,15 +1,17 @@
 find_package(OpenGL 3 REQUIRED)
 
-# GLFW
-add_subdirectory(external/GLFW)
-target_include_directories(external_libs INTERFACE external/GLFW/include)
-target_link_directories(external_libs INTERFACE external/GLFW/src)
-
 # glad
 set(GLAD_SOURCES_DIR "${PROJECT_SOURCE_DIR}/external/glad/")
 add_subdirectory("${GLAD_SOURCES_DIR}/cmake" glad_cmake)
 glad_add_library(glad_gl_core_33 REPRODUCIBLE API gl:core=3.3)
 
+# GLFW
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+add_subdirectory(external/GLFW)
+target_include_directories(external_libs INTERFACE external/GLFW/include)
+target_link_directories(external_libs INTERFACE external/GLFW/src)
 
 # stb_image library
 target_include_directories(external_libs INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/external/stb)

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <GLFW/glfw3.h>
 #include <iostream>
-
 #include "Graphics/Window.hpp"
 //#include "Graphics/WindowImGUI.hpp"
 

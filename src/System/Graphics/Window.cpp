@@ -6,14 +6,22 @@
 #include "Image.hpp"
 
 namespace Argo {
+    void Window::KeyHandler(GLFWwindow* window, int key, int scancode, int action, int mods) {
+        if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+            glfwTerminate();
+//            Close();
+        }
+    }
+
     Window::Window() {
         Window(800, 600, "");
     }
 
     Window::Window(double width, double height, const char *title) {
         /* Initialize the library */
-        if (!glfwInit())
+        if (!glfwInit()) {
             return;
+        }
 
         glfwSetTime(0);
 
@@ -31,6 +39,16 @@ namespace Argo {
 
         /* Make the window's context current */
         glfwMakeContextCurrent(this->window);
+
+        /* Load glad */
+        int version = gladLoadGL(glfwGetProcAddress);
+        if (version == 0) {
+            printf("Failed to initialize OpenGL context\n");
+            return;
+        }
+
+        glViewport(0, 0, width, height);
+
     }
 
     void Window::Update() {
@@ -43,7 +61,12 @@ namespace Argo {
             return;
         }
 
+        glfwSetKeyCallback(this->window, this->KeyHandler);
+
         RenderFrame();
+
+        /* Poll for and process events */
+        glfwPollEvents();
     }
 
 // This will limit render calls to a defined framerate
@@ -56,27 +79,18 @@ namespace Argo {
             this->drawFrameCount++;
 
             /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
-
             glClearColor(this->clearColor.red,
                          this->clearColor.green,
                          this->clearColor.blue,
                          this->clearColor.alpha);
 
-            glOrtho(0, *this->width, 0, *this->height, -1, 1);
+            glClear(GL_COLOR_BUFFER_BIT);
 
-
+//            glOrtho(0, *this->width, 0, *this->height, -1, 1);
 //            Image* image = new Image("resources/viking.png");
-
-
-
-
 
             /* Swap front and back buffers */
             glfwSwapBuffers(this->window);
-
-            /* Poll for and process events */
-            glfwPollEvents();
 
             return;
         }
