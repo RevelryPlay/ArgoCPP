@@ -5,6 +5,12 @@ add_subdirectory(external/GLFW)
 target_include_directories(external_libs INTERFACE external/GLFW/include)
 target_link_directories(external_libs INTERFACE external/GLFW/src)
 
+# glad
+set(GLAD_SOURCES_DIR "${PROJECT_SOURCE_DIR}/external/glad/")
+add_subdirectory("${GLAD_SOURCES_DIR}/cmake" glad_cmake)
+glad_add_library(glad_gl_core_33 REPRODUCIBLE API gl:core=3.3)
+
+
 # stb_image library
 target_include_directories(external_libs INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/external/stb)
 
@@ -30,6 +36,7 @@ target_include_directories(imgui_glfw
 
 target_link_libraries(
         external_libs INTERFACE
+        glad_gl_core_33
         glfw
         imgui_glfw
 )
