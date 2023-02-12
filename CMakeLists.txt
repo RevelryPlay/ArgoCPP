@@ -39,7 +39,7 @@ include(cmake/git.cmake)
 include(cmake/graphics.cmake)
 
 # Link our external libraries into ${PROJECT_NAME}
-target_link_libraries(${PROJECT_NAME} PRIVATE external_libs)
+target_link_libraries(${PROJECT_NAME} PUBLIC external_libs)
 
 # Run CTests
 include(cmake/testing.cmake)
