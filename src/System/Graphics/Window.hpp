@@ -1,19 +1,22 @@
 #pragma once
 
 #include <iostream>
+#include <array>
 
 #define GLFW_INCLUDE_NONE
-
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
+
 #include "CommonColor.hpp"
+#include "../Input.hpp"
+#include "Shader.hpp"
 
 namespace Argo {
     class Window {
     public:
         Window();
 
-        Window(int width, int height, const char *title);
+        Window(int width, int height, const char *title, bool fullscreen = false);
 
         ~Window();
 

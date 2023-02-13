@@ -6,21 +6,70 @@
 #include "Image.hpp"
 
 namespace Argo {
+    static Shader shader;
+
+    struct Vertex {
+        std::array<float, 4> color;
+        std::array<float, 3> position;
+    };
+
+    static std::array<Vertex, 6> colorSquares = {
+            //      Color                         Position
+            Vertex{{0.9f,  0.1f, 0.12f, 1.0f},   {-0.5f, -0.5f, 0.0f}},
+            Vertex{{0.1f,  0.9f, 0.12f, 1.0f},   {-0.5f,  0.5f, 0.0f}},
+            Vertex{{0.12f, 0.9f, 0.1f,  1.0f},   { 0.5f,  0.5f, 0.0f}},
+
+            Vertex{{0.9f,  0.1f, 0.12f, 1.0f},   {-0.5f, -0.5f, 0.0f}},
+            Vertex{{0.12f, 0.9f, 0.1f,  1.0f},   { 0.5f,  0.5f, 0.0f}},
+            Vertex{{0.12f, 0.1f, 0.9f,  1.0f},   { 0.5f, -0.5f, 0.0f}}
+    };
+
+    static uint32_t colorSquaresVAO;
+    static uint32_t colorSquaresVBO;
+
+    void setupColorSquaresTest()
+    {
+        glCreateVertexArrays(1, &colorSquaresVAO);
+        glBindVertexArray(colorSquaresVAO);
+
+        glGenBuffers(1, &colorSquaresVBO);
+        glBindBuffer(GL_ARRAY_BUFFER, colorSquaresVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(colorSquares), colorSquares.data(), GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+        glEnableVertexAttribArray(0);
+
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+        glEnableVertexAttribArray(1);
+    }
+
+    void drawColorSquaresTest()
+    {
+        glBindVertexArray(colorSquaresVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+    }
+
+    void destroyColorSquaresTest()
+    {
+        glDeleteBuffers(1, &colorSquaresVBO);
+        glDeleteVertexArrays(1, &colorSquaresVAO);
+    }
+
     void Window::KeyHandler(GLFWwindow *window,
                             int key,
                             [[maybe_unused]] int scancode,
                             int action,
                             [[maybe_unused]] int mods) {
         if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-            glfwSetWindowShouldClose(window, 1);
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
         }
     }
 
     Window::Window() {
-        Window(800, 600, "");
+        Window(800, 600, "", false);
     }
 
-    Window::Window(int initial_width, int initial_height, const char *title) {
+    Window::Window(int initial_width, int initial_height, const char *title, bool fullscreen) {
         /* Initialize the GLFW library */
         if (!glfwInit()) {
             return;
@@ -32,7 +81,8 @@ namespace Argo {
         height = initial_height;
 
         /* Create a windowed mode window and its OpenGL context */
-        window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+        GLFWmonitor* primaryMonitor = fullscreen ? glfwGetPrimaryMonitor() : nullptr;
+        window = glfwCreateWindow(width, height, title, primaryMonitor, nullptr);
         clearColor = Utilities::ConvertColor(0x1f7fbfff);
 
         if (!window) {
@@ -50,9 +100,16 @@ namespace Argo {
             return;
         }
 
+        shader.Compile();
+
         glViewport(0, 0, width, height);
 
+        shader.Bind();
+
         glfwSetKeyCallback(window, KeyHandler);
+
+        setupColorSquaresTest();
+
     }
 
     void Window::Update() {
@@ -91,6 +148,13 @@ namespace Argo {
 //            glOrtho(0, *this->width, 0, *this->height, -1, 1);
 //            Image* image = new Image("resources/viking.png");
 
+
+
+            drawColorSquaresTest();
+
+
+
+
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
 
@@ -122,6 +186,8 @@ namespace Argo {
         if (!window) {
             return;
         }
+
+        destroyColorSquaresTest();
 
         glfwTerminate();
         window = nullptr;
