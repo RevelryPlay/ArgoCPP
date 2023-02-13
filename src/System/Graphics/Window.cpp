@@ -51,19 +51,19 @@ namespace Argo {
         }
 
         glViewport(0, 0, width, height);
+
+        glfwSetKeyCallback(window, KeyHandler);
     }
 
     void Window::Update() {
-        if (!this->window) {
+        if (!window) {
             return;
         }
 
-        if (glfwWindowShouldClose(this->window)) {
+        if (glfwWindowShouldClose(window)) {
             Close();
             return;
         }
-
-        glfwSetKeyCallback(this->window, this->KeyHandler);
 
         RenderFrame();
 

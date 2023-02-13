@@ -36,11 +36,15 @@ target_include_directories(imgui_glfw
         external/imgui/examples
         )
 
+# GLM
+add_subdirectory(external/glm)
+
 target_link_libraries(
         external_libs INTERFACE
         glad_gl_core_33
         glfw
         imgui_glfw
+        glm
 )
 
 # Copy image resource files
