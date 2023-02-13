@@ -10,13 +10,17 @@ namespace Argo {
         Game();
 
         void Update();
+
         void LateUpdate();
+
         void Draw();
+
         bool IsRunning();
+
         void Close();
 
     private:
-        Window* window;
+        Window *window;
 //        WindowImGUI* window;
     };
 }

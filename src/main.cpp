@@ -1,8 +1,7 @@
 #include "ArgoConfig.h"
 #include "System/Game.hpp"
 
-int main(int, char**)
-{
+int main(int, char **) {
     Argo::Game game = Argo::Game();
 
     // Get System Modules
@@ -23,8 +22,7 @@ int main(int, char**)
     // Get Registered Extensions
     // Handle Preloads
     // Core Event Loop
-    while (game.IsRunning())
-    {
+    while (game.IsRunning()) {
         game.Update();
         game.LateUpdate();
         game.Draw();

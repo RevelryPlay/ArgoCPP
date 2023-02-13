@@ -14,6 +14,7 @@ namespace Argo {
     }
 
     void Game::LateUpdate() {}
+
     void Game::Draw() {}
 
     bool Game::IsRunning() {

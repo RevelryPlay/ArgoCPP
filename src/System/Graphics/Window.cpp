@@ -6,10 +6,13 @@
 #include "Image.hpp"
 
 namespace Argo {
-    void Window::KeyHandler(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    void Window::KeyHandler(GLFWwindow *window,
+                            int key,
+                            [[maybe_unused]] int scancode,
+                            int action,
+                            [[maybe_unused]] int mods) {
         if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-            glfwTerminate();
-//            Close();
+            glfwSetWindowShouldClose(window, 1);
         }
     }
 
@@ -17,38 +20,37 @@ namespace Argo {
         Window(800, 600, "");
     }
 
-    Window::Window(double width, double height, const char *title) {
-        /* Initialize the library */
+    Window::Window(int initial_width, int initial_height, const char *title) {
+        /* Initialize the GLFW library */
         if (!glfwInit()) {
             return;
         }
 
         glfwSetTime(0);
 
-        this->width = &width;
-        this->height = &height;
+        width = initial_width;
+        height = initial_height;
 
         /* Create a windowed mode window and its OpenGL context */
-        this->window = glfwCreateWindow(width, height, title, NULL, NULL);
-        this->clearColor = Utilities::ConvertColor(0x1f7fbfff);
+        window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+        clearColor = Utilities::ConvertColor(0x1f7fbfff);
 
-        if (!this->window) {
+        if (!window) {
             glfwTerminate();
             return;
         }
 
         /* Make the window's context current */
-        glfwMakeContextCurrent(this->window);
+        glfwMakeContextCurrent(window);
 
         /* Load glad */
         int version = gladLoadGL(glfwGetProcAddress);
         if (version == 0) {
-            printf("Failed to initialize OpenGL context\n");
+            fprintf(stderr, "Failed to initialize OpenGL context\n");
             return;
         }
 
         glViewport(0, 0, width, height);
-
     }
 
     void Window::Update() {
@@ -72,17 +74,17 @@ namespace Argo {
 // This will limit render calls to a defined framerate
     void Window::RenderFrame() {
         double currentTime = glfwGetTime();
-        double delta = currentTime - this->lastFrameTime;
+        double delta = currentTime - lastFrameTime;
 
         if (delta >= (1.0 / this->frameRateCap)) {
-            this->lastFrameTime = currentTime;
-            this->drawFrameCount++;
+            lastFrameTime = currentTime;
+            drawFrameCount++;
 
             /* Render here */
-            glClearColor(this->clearColor.red,
-                         this->clearColor.green,
-                         this->clearColor.blue,
-                         this->clearColor.alpha);
+            glClearColor(clearColor.red,
+                         clearColor.green,
+                         clearColor.blue,
+                         clearColor.alpha);
 
             glClear(GL_COLOR_BUFFER_BIT);
 
@@ -90,7 +92,7 @@ namespace Argo {
 //            Image* image = new Image("resources/viking.png");
 
             /* Swap front and back buffers */
-            glfwSwapBuffers(this->window);
+            glfwSwapBuffers(window);
 
             return;
         }
@@ -117,15 +119,15 @@ namespace Argo {
     }
 
     void Window::Close() {
-        if (!this->window) {
+        if (!window) {
             return;
         }
 
         glfwTerminate();
-        this->window = nullptr;
+        window = nullptr;
     }
 
     bool Window::IsOpen() {
-        return this->window != nullptr;
+        return window != nullptr;
     }
 }
