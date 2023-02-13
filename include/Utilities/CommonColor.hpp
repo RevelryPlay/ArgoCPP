@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vec4.hpp"
+#include <glm/vec4.hpp>
 
 namespace Argo {
     namespace Utilities {
@@ -18,8 +18,8 @@ namespace Argo {
              * Returns an Vec4 for compatibility with other libraries
              * @return Vec4
              */
-            Vec4 ToVec4() const {
-                return Vec4(
+            glm::vec4 ToVec4() const {
+                return glm::vec4(
                         red,
                         green,
                         blue,

@@ -7,13 +7,13 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/vec4.hpp>
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
 #include "Window.hpp"
-
-#include "Vec4.hpp"
 
 namespace Argo {
 
@@ -36,6 +36,6 @@ namespace Argo {
     protected:
         void CreateDockSpace();
 
-        Argo::Utilities::Vec4 clearColorVec4 = Argo::Utilities::CommonColor().ToVec4();
+        glm::vec4 clearColorVec4 = Argo::Utilities::CommonColor().ToVec4();
     };
 }

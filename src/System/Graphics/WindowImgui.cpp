@@ -28,13 +28,13 @@ namespace Argo {
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
         // Create window with graphics context
-        this->window = glfwCreateWindow(width, height, title, NULL, NULL);
-        if (!this->window) {
+        window = glfwCreateWindow(width, height, title, NULL, NULL);
+        if (!window) {
             glfwTerminate();
             return;
         }
 
-        glfwMakeContextCurrent(this->window);
+        glfwMakeContextCurrent(window);
 
         /* Load glad */
         int version = gladLoadGL(glfwGetProcAddress);
@@ -66,7 +66,7 @@ namespace Argo {
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
 
-        ImGui_ImplGlfw_InitForOpenGL(this->window, true);
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init(glsl_version);
 
         io.Fonts->AddFontFromFileTTF(R"(c:\Windows\Fonts\segoeui.ttf)", 18.0f);
@@ -76,12 +76,12 @@ namespace Argo {
     }
 
     void WindowImGUI::Update() {
-        if (!this->window) {
+        if (!window) {
             return;
         }
 
-        if (glfwWindowShouldClose(this->window)) {
-            this->Close();
+        if (glfwWindowShouldClose(window)) {
+            Close();
             return;
         }
 
@@ -91,8 +91,8 @@ namespace Argo {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        this->CreateDockSpace();
-        this->RenderFrame();
+        CreateDockSpace();
+        RenderFrame();
 
         // Rendering
         ImGui::Render();
@@ -102,7 +102,7 @@ namespace Argo {
 
 //        Utilities::Vec4 clearColorVec4 = Argo::Utilities::ConvertColor(0x1f7fbfff).ToVec4();
 
-        Utilities::Vec4 clearColorVec4 = {0.121568628, 0.498039216, 0.749019622, 1};
+        glm::vec4 clearColorVec4 = {0.121568628, 0.498039216, 0.749019622, 1};
 
         glClearColor(clearColorVec4.x * clearColorVec4.w,
                      clearColorVec4.y * clearColorVec4.w,
@@ -153,7 +153,7 @@ namespace Argo {
         // any change of dockspace/settings would lead to windows being stuck in limbo and never being visible.
         if (!opt_padding)
             ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-        ImGui::Begin("DockSpace Demo", reinterpret_cast<bool *>(true), window_flags);
+        ImGui::Begin("DockSpace", reinterpret_cast<bool *>(true), window_flags);
         if (!opt_padding)
             ImGui::PopStyleVar();
 
