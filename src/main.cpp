@@ -2,31 +2,14 @@
 #include "System/Game.hpp"
 
 int main(int, char **) {
-    Argo::Game game = Argo::Game();
-
-    // Get System Modules
-    // Base Error Handlers
-    // OS Specific Modules
-    // File System Utilities
-    // Loggers
-    // Serializers
-    // Asset Loaders
-    // Save / Load
-    // Settings Handler
-
-    // Graphic Utilities
-    // Audio Utilities
-    // Input Utilities
-    // Networking Utilities
-
-    // Get Registered Extensions
-    // Handle Preloads
-    // Core Event Loop
-    while (game.IsRunning()) {
-        game.Update();
-        game.LateUpdate();
-        game.Draw();
+    if (!Argo::Game::init())
+    {
+        fprintf(stderr, "Failed to initialize the game. See the logs above for more details.");
+        return -1;
     }
 
-    game.Close();
+    Argo::Game::run();
+    Argo::Game::free();
+
+    return 0;
 }

@@ -47,6 +47,8 @@ target_link_libraries(
         glm
 )
 
-# Copy image resource files
-file(GLOB IMG_SRC resources/**.png)
-file(COPY ${IMG_SRC} DESTINATION ${CMAKE_BINARY_DIR}/resources)
+# Copy Shader files
+file(GLOB FRAG_SRC resources/shaders/fragment/*.glsl)
+file(GLOB VERT_SRC resources/shaders/vertex/*.glsl)
+file(COPY ${FRAG_SRC} DESTINATION ${CMAKE_BINARY_DIR}/resources/shaders/fragment)
+file(COPY ${VERT_SRC} DESTINATION ${CMAKE_BINARY_DIR}/resources/shaders/vertex)

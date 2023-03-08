@@ -1,26 +1,28 @@
 #pragma once
 
-#include <iostream>
-#include "Graphics/Window.hpp"
-//#include "Graphics/WindowImGUI.hpp"
+#include <glm/mat4x4.hpp>
+#include <glm/matrix.hpp>
+
+#include "CommonIncludes.hpp"
+#include "Graphics/OpenGl/Window.hpp"
+#include "Cubes.hpp"
+#include "Input.hpp"
+#include "CharacterController.hpp"
+#include "CharacterSystem.hpp"
+#include "PlayerController.hpp"
+#include "Graphics/OpenGL/Camera.hpp"
 
 namespace Argo {
-    class Game {
-    public:
-        Game();
+    struct Window;
 
-        void Update();
+    namespace Game
+    {
+        bool init();
+        void run();
+        void free();
 
-        void LateUpdate();
+        const Window& getWindow();
 
-        void Draw();
-
-        bool IsRunning();
-
-        void Close();
-
-    private:
-        Window *window;
-//        WindowImGUI* window;
-    };
+        extern float deltaTime;
+    }
 }

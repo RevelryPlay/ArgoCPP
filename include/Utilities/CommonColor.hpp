@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glm/vec4.hpp>
+#include "CommonIncludes.hpp"
 
 namespace Argo {
     namespace Utilities {

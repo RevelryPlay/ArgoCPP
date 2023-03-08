@@ -1,5 +1,4 @@
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
+#include "CommonIncludes.hpp"
 
 namespace Argo {
     namespace Input
@@ -10,11 +9,14 @@ namespace Argo {
         extern float mouseY;
         extern float mouseScrollX;
         extern float mouseScrollY;
+        extern float deltaMouseX;
+        extern float deltaMouseY;
 
         void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
         void mouseCallback(GLFWwindow* window, double xpos, double ypos);
         void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
         void mouseScrollCallback(GLFWwindow* window, double xoffset, double yoffset);
+        void endFrame();
 
         bool isKeyDown(int key);
         bool isMouseButtonDown(int mouseButton);

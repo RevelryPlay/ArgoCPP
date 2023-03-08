@@ -11,13 +11,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 configure_file(ArgoConfig.h.in ArgoConfig.h)
 
 # Include any project source files
-file(GLOB CPP_SOURCES
+file(GLOB_RECURSE CPP_SOURCES
         "${PROJECT_SOURCE_DIR}/src/*.cpp"
         "${PROJECT_SOURCE_DIR}/src/*.hpp"
         "${PROJECT_SOURCE_DIR}/src/**/*.cpp"
         "${PROJECT_SOURCE_DIR}/src/**/*.hpp"
-        "${PROJECT_SOURCE_DIR}/src/**/**/*.cpp"
-        "${PROJECT_SOURCE_DIR}/src/**/**/*.hpp"
         )
 
 include_directories(${PROJECT_NAME}
@@ -35,6 +33,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 # Fetch submodules with git
 include(cmake/git.cmake)
 
+# Robin Hood
+add_subdirectory(external/robin-hood)
+target_include_directories(external_libs INTERFACE external/robin-hood/src/include)
+
+
 # Add any graphic utilities / libraries
 include(cmake/graphics.cmake)
 
@@ -43,3 +46,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC external_libs)
 
 # Run CTests
 include(cmake/testing.cmake)
+
+# Copy image resource files
+file(GLOB IMG_SRC resources/images/**.png)
+file(COPY ${IMG_SRC} DESTINATION ${CMAKE_BINARY_DIR}/resources/images)
