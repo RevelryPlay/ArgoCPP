@@ -37,7 +37,6 @@ include(cmake/git.cmake)
 add_subdirectory(external/robin-hood)
 target_include_directories(external_libs INTERFACE external/robin-hood/src/include)
 
-
 # Add any graphic utilities / libraries
 include(cmake/graphics.cmake)
 

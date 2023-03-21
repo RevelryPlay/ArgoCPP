@@ -1,4 +1,6 @@
 #include "ArgoConfig.h"
+
+#ifdef _WIN32
 #include "System/Game.hpp"
 
 int main(int, char **) {
@@ -13,3 +15,13 @@ int main(int, char **) {
 
     return 0;
 }
+#endif
+
+#if defined(__APPLE__) && defined(__MACH__)
+#include "MacCommonIncludes.hpp"
+
+int main(int, char **) {
+    fprintf(stdout, "running on mac");
+    return 1;
+}
+#endif
