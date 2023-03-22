@@ -1,10 +1,10 @@
 #pragma once
 
-#include <glm/mat4x4.hpp>
-#include <glm/matrix.hpp>
+#include "glm/mat4x4.hpp"
+#include "glm/matrix.hpp"
 
 #include "CommonIncludes.hpp"
-#include "Graphics/OpenGl/Window.hpp"
+#include "Graphics/OpenGL/Window.hpp"
 #include "Cubes.hpp"
 #include "Input.hpp"
 #include "CharacterController.hpp"

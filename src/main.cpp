@@ -1,7 +1,8 @@
 #include "ArgoConfig.h"
 
+// Windows Specific Code
 #ifdef _WIN32
-#include "System/Game.hpp"
+#include "Windows/System/Game.hpp"
 
 int main(int, char **) {
     if (!Argo::Game::init())
@@ -17,11 +18,12 @@ int main(int, char **) {
 }
 #endif
 
+// Mac OS Specific Code
 #if defined(__APPLE__) && defined(__MACH__)
 #include "MacCommonIncludes.hpp"
 
 int main(int, char **) {
     fprintf(stdout, "running on mac");
-    return 1;
+    return 0;
 }
 #endif

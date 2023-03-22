@@ -11,12 +11,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 configure_file(ArgoConfig.h.in ArgoConfig.h)
 
 # Include any project source files
-file(GLOB_RECURSE CPP_SOURCES
-        "${PROJECT_SOURCE_DIR}/src/*.cpp"
-        "${PROJECT_SOURCE_DIR}/src/*.hpp"
-        "${PROJECT_SOURCE_DIR}/src/**/*.cpp"
-        "${PROJECT_SOURCE_DIR}/src/**/*.hpp"
+if (WIN32)
+    file(GLOB_RECURSE CPP_SOURCES
+        "${PROJECT_SOURCE_DIR}/src/main.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Common/**/*.hpp"
+        "${PROJECT_SOURCE_DIR}/src/Windows/**/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Windows/**/*.hpp"
         )
+elseif(APPLE AND MACH)
+    file(GLOB_RECURSE CPP_SOURCES
+            "${PROJECT_SOURCE_DIR}/src/main.cpp"
+            "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
+            "${PROJECT_SOURCE_DIR}/src/Common/**/*.hpp"
+            "${PROJECT_SOURCE_DIR}/src/Mac/**/*.cpp"
+            "${PROJECT_SOURCE_DIR}/src/Mac/**/*.hpp"
+            )
+endif()
 
 include_directories(${PROJECT_NAME}
         include
