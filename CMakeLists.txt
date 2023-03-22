@@ -19,7 +19,7 @@ if (WIN32)
         "${PROJECT_SOURCE_DIR}/src/Windows/**/*.cpp"
         "${PROJECT_SOURCE_DIR}/src/Windows/**/*.hpp"
         )
-elseif(APPLE AND MACH)
+elseif(APPLE)
     file(GLOB_RECURSE CPP_SOURCES
             "${PROJECT_SOURCE_DIR}/src/main.cpp"
             "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
