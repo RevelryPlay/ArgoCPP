@@ -51,3 +51,6 @@ _deps
 
 # Test Results
 TestResults.xml
+
+# Index Files
+.DS_Store
