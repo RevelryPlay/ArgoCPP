@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COMMON_INCLUDES
+#define COMMON_INCLUDES
 
 #include <array>
 #include <fstream>
@@ -33,3 +34,4 @@
 #include <glm/gtc/matrix_access.hpp>
 
 #include <robin_hood.h>
+#endif
