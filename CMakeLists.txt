@@ -13,7 +13,7 @@ configure_file(ArgoConfig.h.in ArgoConfig.h)
 # Include any project source files
 if (WIN32)
     file(GLOB_RECURSE CPP_SOURCES
-        "${PROJECT_SOURCE_DIR}/src/main.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Windows/main.cpp"
         "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
         "${PROJECT_SOURCE_DIR}/src/Common/**/*.hpp"
         "${PROJECT_SOURCE_DIR}/src/Windows/**/*.cpp"
@@ -21,7 +21,7 @@ if (WIN32)
         )
 elseif(APPLE)
     file(GLOB_RECURSE CPP_SOURCES
-            "${PROJECT_SOURCE_DIR}/src/main.cpp"
+            "${PROJECT_SOURCE_DIR}/src/mac/main.cpp"
             "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
             "${PROJECT_SOURCE_DIR}/src/Common/**/*.hpp"
             "${PROJECT_SOURCE_DIR}/src/Mac/**/*.cpp"
@@ -44,19 +44,16 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 # Fetch submodules with git
 include(cmake/git.cmake)
 
-# Robin Hood
-add_subdirectory(external/robin-hood)
-target_include_directories(external_libs INTERFACE external/robin-hood/src/include)
-
-# Add any graphic utilities / libraries
-include(cmake/graphics.cmake)
+if (WIN32)
+    include(cmake/win.cmake)
+elseif(APPLE)
+    include(cmake/mac.cmake)
+endif()
 
 # Link our external libraries into ${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} PUBLIC external_libs)
 
-# Run CTests
-include(cmake/testing.cmake)
+# Robin Hood
+add_subdirectory(external/robin-hood)
+target_include_directories(external_libs INTERFACE external/robin-hood/src/include)
 
-# Copy image resource files
-file(GLOB IMG_SRC resources/images/**.png)
-file(COPY ${IMG_SRC} DESTINATION ${CMAKE_BINARY_DIR}/resources/images)
