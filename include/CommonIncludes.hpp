@@ -1,5 +1,5 @@
-#ifndef COMMON_INCLUDES
-#define COMMON_INCLUDES
+#ifndef ARGO_COMMON_INCLUDES
+#define ARGO_COMMON_INCLUDES
 
 #include <array>
 #include <fstream>

@@ -1,13 +1,13 @@
 #include "AppDelegate.hpp"
 
-ArgoAppDelegate::~ArgoAppDelegate() {
+AppDelegate::~AppDelegate() {
     _pMtkView->release();
     _pWindow->release();
     _pDevice->release();
     delete _pViewDelegate;
 }
 
-NS::Menu *ArgoAppDelegate::createMenuBar() {
+NS::Menu *AppDelegate::createMenuBar() {
     using NS::StringEncoding::UTF8StringEncoding;
 
     NS::Menu *pMainMenu = NS::Menu::alloc()->init();
@@ -49,14 +49,14 @@ NS::Menu *ArgoAppDelegate::createMenuBar() {
     return pMainMenu->autorelease();
 }
 
-void ArgoAppDelegate::applicationWillFinishLaunching(NS::Notification *pNotification) {
+void AppDelegate::applicationWillFinishLaunching(NS::Notification *pNotification) {
     NS::Menu *pMenu = createMenuBar();
     NS::Application *pApp = reinterpret_cast< NS::Application * >( pNotification->object());
     pApp->setMainMenu(pMenu);
     pApp->setActivationPolicy(NS::ActivationPolicy::ActivationPolicyRegular);
 }
 
-void ArgoAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotification) {
+void AppDelegate::applicationDidFinishLaunching(NS::Notification *pNotification) {
     CGRect frame = (CGRect) {{100.0, 100.0},
                              {512.0, 512.0}};
 
@@ -84,6 +84,6 @@ void ArgoAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotificat
     pApp->activateIgnoringOtherApps(true);
 }
 
-bool ArgoAppDelegate::applicationShouldTerminateAfterLastWindowClosed(NS::Application *pSender) {
+bool AppDelegate::applicationShouldTerminateAfterLastWindowClosed(NS::Application *pSender) {
     return true;
 }

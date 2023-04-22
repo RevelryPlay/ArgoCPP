@@ -3,7 +3,7 @@
 // Mac OS Specific Code
 #if defined(__APPLE__) && defined(__MACH__)
 
-//#include "MacCommonIncludes.hpp"
+#include "MacCommonIncludes.hpp"
 #include "System/AppDelegate.hpp"
 
 int main(int argc, char *argv[]) {
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
     NS::AutoreleasePool *pAutoreleasePool = NS::AutoreleasePool::alloc()->init();
 
-    ArgoAppDelegate del;
+    AppDelegate del;
 
     NS::Application *pSharedApplication = NS::Application::sharedApplication();
     pSharedApplication->setDelegate(&del);

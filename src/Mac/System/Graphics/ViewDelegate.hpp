@@ -1,5 +1,5 @@
 #pragma once
-//#include "MacCommonIncludes.hpp"
+#include "MacCommonIncludes.hpp"
 
 #include "Renderer.hpp"
 

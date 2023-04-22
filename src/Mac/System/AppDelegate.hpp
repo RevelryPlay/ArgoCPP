@@ -1,10 +1,10 @@
 #pragma once
-//#include "MacCommonIncludes.hpp"
+#include "MacCommonIncludes.hpp"
 #include "Graphics/ViewDelegate.hpp"
 
-class ArgoAppDelegate : public NS::ApplicationDelegate {
+class AppDelegate : public NS::ApplicationDelegate {
 public:
-    ~ArgoAppDelegate();
+    ~AppDelegate();
 
     NS::Menu *createMenuBar();
 
