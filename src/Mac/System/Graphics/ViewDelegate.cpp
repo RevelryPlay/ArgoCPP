@@ -1,7 +1,7 @@
 #include "ViewDelegate.hpp"
 
 ArgoMTKViewDelegate::ArgoMTKViewDelegate(MTL::Device *pDevice)
-        : MTK::ViewDelegate(), _pRenderer(new Renderer(pDevice)) {
+        : MTK::ViewDelegate(), _pRenderer(new ArgoRenderer(pDevice)) {
 }
 
 ArgoMTKViewDelegate::~ArgoMTKViewDelegate() {

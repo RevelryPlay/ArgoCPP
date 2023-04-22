@@ -2,9 +2,9 @@
 #include "MacCommonIncludes.hpp"
 #include "Graphics/ViewDelegate.hpp"
 
-class AppDelegate : public NS::ApplicationDelegate {
+class ArgoAppDelegate : public NS::ApplicationDelegate {
 public:
-    ~AppDelegate();
+    ~ArgoAppDelegate();
 
     NS::Menu *createMenuBar();
 

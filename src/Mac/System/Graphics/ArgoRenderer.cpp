@@ -1,13 +1,13 @@
-#include "Renderer.hpp"
+#include "ArgoRenderer.hpp"
 
-Renderer::Renderer(MTL::Device *pDevice)
+ArgoRenderer::ArgoRenderer(MTL::Device *pDevice)
         : _pDevice(pDevice->retain()) {
     _pCommandQueue = _pDevice->newCommandQueue();
     buildShaders();
     buildBuffers();
 }
 
-Renderer::~Renderer() {
+ArgoRenderer::~ArgoRenderer() {
     _pVertexPositionsBuffer->release();
     _pVertexColorsBuffer->release();
     _pPSO->release();
@@ -15,7 +15,7 @@ Renderer::~Renderer() {
     _pDevice->release();
 }
 
-void Renderer::buildShaders() {
+void ArgoRenderer::buildShaders() {
     using NS::StringEncoding::UTF8StringEncoding;
 
     const char *shaderSrc = R"(
@@ -71,7 +71,7 @@ void Renderer::buildShaders() {
     pLibrary->release();
 }
 
-void Renderer::buildBuffers() {
+void ArgoRenderer::buildBuffers() {
     const size_t NumVertices = 3;
     using glm::vec3;
 
@@ -105,7 +105,7 @@ void Renderer::buildBuffers() {
     _pVertexColorsBuffer->didModifyRange(NS::Range::Make(0, _pVertexColorsBuffer->length()));
 }
 
-void Renderer::draw(MTK::View *pView) {
+void ArgoRenderer::draw(MTK::View *pView) {
     NS::AutoreleasePool *pPool = NS::AutoreleasePool::alloc()->init();
 
     MTL::CommandBuffer *pCmd = _pCommandQueue->commandBuffer();

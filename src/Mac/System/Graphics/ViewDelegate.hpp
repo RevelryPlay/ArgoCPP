@@ -1,7 +1,7 @@
 #pragma once
 #include "MacCommonIncludes.hpp"
 
-#include "Renderer.hpp"
+#include "ArgoRenderer.hpp"
 
 class ArgoMTKViewDelegate : public MTK::ViewDelegate {
 public:
@@ -10,5 +10,5 @@ public:
     virtual void drawInMTKView(MTK::View *pView) override;
 
 private:
-    Renderer *_pRenderer;
+    ArgoRenderer *_pRenderer;
 };

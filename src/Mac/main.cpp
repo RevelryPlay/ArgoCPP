@@ -4,7 +4,7 @@
 #if defined(__APPLE__) && defined(__MACH__)
 
 #include "MacCommonIncludes.hpp"
-#include "System/AppDelegate.hpp"
+#include "System/ArgoAppDelegate.hpp"
 
 int main(int argc, char *argv[]) {
     fprintf(stdout, "running on mac\r\n");
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
     NS::AutoreleasePool *pAutoreleasePool = NS::AutoreleasePool::alloc()->init();
 
-    AppDelegate del;
+    ArgoAppDelegate del;
 
     NS::Application *pSharedApplication = NS::Application::sharedApplication();
     pSharedApplication->setDelegate(&del);

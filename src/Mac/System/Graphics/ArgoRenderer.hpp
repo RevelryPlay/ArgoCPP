@@ -1,10 +1,10 @@
 #pragma once
 #include "MacCommonIncludes.hpp"
 
-class Renderer {
+class ArgoRenderer {
 public:
-    Renderer(MTL::Device *pDevice);
-    ~Renderer();
+    ArgoRenderer(MTL::Device *pDevice);
+    ~ArgoRenderer();
 
     void buildShaders();
     void buildBuffers();
