@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(ArgoCPP VERSION 0.0.1)
+project(ArgoCpp VERSION 0.0.1)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -34,7 +34,7 @@ include_directories(${PROJECT_NAME}
         include/Utilities
         )
 
-add_executable(${PROJECT_NAME} ${CPP_SOURCES} ArgoConfig.h.in)
+add_executable(${PROJECT_NAME} ${CPP_SOURCES} ArgoConfig.h.in src/Mac/System/AppDelegate.cpp src/Mac/System/AppDelegate.hpp)
 
 # Create an interface library to attach any external dependencies to
 add_library(external_libs INTERFACE)
