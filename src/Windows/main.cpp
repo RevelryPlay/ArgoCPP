@@ -2,7 +2,7 @@
 
 // Windows Specific Code
 #ifdef _WIN32
-#include "Windows/System/Game.hpp"
+#include "System/Game.hpp"
 
 int main(int, char **) {
     if (!Argo::Game::init())
