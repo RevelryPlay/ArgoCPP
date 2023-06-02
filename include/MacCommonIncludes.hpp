@@ -1,5 +1,5 @@
-#ifndef ARGO_COMMON_INCLUDES
-#define ARGO_COMMON_INCLUDES
+#ifndef ARGO_MAC_COMMON_INCLUDES
+#define ARGO_MAC_COMMON_INCLUDES
 
 // STD
 #include <array>
@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <map>
 
 // Metal
 #define NS_PRIVATE_IMPLEMENTATION

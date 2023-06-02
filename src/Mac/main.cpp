@@ -3,7 +3,7 @@
 // Mac OS Specific Code
 #if defined(__APPLE__) && defined(__MACH__)
 
-#include "MacCommonIncludes.hpp"
+#include "Common.hpp"
 #include "System/ArgoAppDelegate.hpp"
 
 int main(int argc, char *argv[]) {

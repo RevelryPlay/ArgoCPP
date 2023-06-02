@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CommonIncludes.hpp"
+#include "Common.hpp"
 #include "../../Game.hpp"
 
 namespace Argo {

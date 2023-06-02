@@ -1,5 +1,5 @@
-#ifndef ARGO_COMMON_INCLUDES
-#define ARGO_COMMON_INCLUDES
+#ifndef ARGO_WIN_COMMON_INCLUDES
+#define ARGO_WIN_COMMON_INCLUDES
 
 #include <array>
 #include <fstream>
@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <map>
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>

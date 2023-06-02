@@ -1,5 +1,5 @@
 #pragma once
-#include "CommonIncludes.hpp"
+#include "Common.hpp"
 #include "Shader.hpp"
 
 namespace Argo {

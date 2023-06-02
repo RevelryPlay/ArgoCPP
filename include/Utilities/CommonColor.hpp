@@ -1,6 +1,8 @@
 #pragma once
 
-#include "CommonIncludes.hpp"
+#define GLM_EXT_INCLUDED
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/vec4.hpp>
 
 namespace Argo {
     namespace Utilities {

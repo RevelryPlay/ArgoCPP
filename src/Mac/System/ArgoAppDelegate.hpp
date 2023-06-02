@@ -1,5 +1,5 @@
 #pragma once
-#include "MacCommonIncludes.hpp"
+#include "Common.hpp"
 #include "Graphics/ViewDelegate.hpp"
 
 class ArgoAppDelegate : public NS::ApplicationDelegate {

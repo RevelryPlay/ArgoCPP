@@ -3,7 +3,7 @@
 #include "glm/mat4x4.hpp"
 #include "glm/matrix.hpp"
 
-#include "CommonIncludes.hpp"
+#include "Common.hpp"
 #include "Graphics/OpenGL/Window.hpp"
 #include "Cubes.hpp"
 #include "Input.hpp"

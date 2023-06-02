@@ -1,5 +1,5 @@
 #pragma once
-#include "CommonIncludes.hpp"
+#include "Common.hpp"
 #include "Input.hpp"
 #include "Game.hpp"
 #include "Graphics/OpenGL/Window.hpp"

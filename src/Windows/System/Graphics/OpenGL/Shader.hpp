@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CommonIncludes.hpp"
+#include "Common.hpp"
 
 namespace Argo {
     enum class ShaderType : uint8_t

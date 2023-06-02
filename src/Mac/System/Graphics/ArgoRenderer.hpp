@@ -1,5 +1,5 @@
 #pragma once
-#include "MacCommonIncludes.hpp"
+#include "Common.hpp"
 
 class ArgoRenderer {
 public:
