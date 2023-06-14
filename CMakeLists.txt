@@ -59,18 +59,19 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 # Fetch submodules with git
 include(cmake/git.cmake)
 
+# Any extra OS specific configuration
 if (WIN32)
     include(cmake/win.cmake)
 elseif (APPLE)
     include(cmake/mac.cmake)
 endif ()
 
-# Link our external libraries into ${PROJECT_NAME}
-target_link_libraries(${PROJECT_NAME} PUBLIC external_libs)
-
 # Robin Hood
 add_subdirectory(external/robin-hood)
 target_include_directories(external_libs INTERFACE external/robin-hood/src/include)
+
+# Link our external libraries into ${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PUBLIC external_libs)
 
 # Run CTests
 #include(cmake/testing.cmake)
