@@ -57,7 +57,7 @@ namespace Argo {
             glfwSetInputMode((GLFWwindow*)window->nativeWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
             // Initialize our game stuff now
-            Cubes::init();
+//            Cubes::init();
 
             return true;
         }
@@ -106,7 +106,7 @@ namespace Argo {
                 CharacterSystem::update(controller, camera, rb);
                 // Finally calculate our new view matrix and draw our scene
                 camera.calculateViewMatrix();
-                Cubes::update(camera);
+//                Cubes::update(camera);
 
                 if (Input::isKeyDown(GLFW_KEY_ESCAPE))
                 {
@@ -127,7 +127,7 @@ namespace Argo {
         {
             // Try to destroy things in the reverse order of initialization
             // to minimize any weird dependency issues during de-initialization
-            Cubes::destroy();
+//            Cubes::destroy();
 
             Window::freeWindow(window);
             window = nullptr;

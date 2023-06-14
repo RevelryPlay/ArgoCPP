@@ -3,9 +3,9 @@
 #include "glm/mat4x4.hpp"
 #include "glm/matrix.hpp"
 
-#include "Common.hpp"
+#include "../../Common/Common.hpp"
 #include "Graphics/OpenGL/Window.hpp"
-#include "Cubes.hpp"
+//#include "Cubes.hpp"
 #include "Input.hpp"
 #include "CharacterController.hpp"
 #include "CharacterSystem.hpp"

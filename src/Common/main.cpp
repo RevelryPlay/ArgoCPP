@@ -1,10 +1,30 @@
 #include "ArgoConfig.h"
 
+// Windows Specific Code
+#ifdef _WIN32
+#include "../Windows/System/Game.hpp"
+
+int main(int, char **) {
+    if (!Argo::Game::init())
+    {
+        fprintf(stderr, "Failed to initialize the game. See the logs above for more details.");
+        return -1;
+    }
+
+    Argo::Game::run();
+    Argo::Game::free();
+
+    return 0;
+}
+
+#endif
+
+
 // Mac OS Specific Code
 #if defined(__APPLE__) && defined(__MACH__)
 
 #include "Common.hpp"
-#include "System/ArgoAppDelegate.hpp"
+#include "../Mac/System/ArgoAppDelegate.hpp"
 
 int main(int argc, char *argv[]) {
     fprintf(stdout, "running on mac\r\n");
@@ -34,6 +54,5 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
 
 #endif

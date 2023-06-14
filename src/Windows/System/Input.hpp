@@ -1,4 +1,4 @@
-#include "Common.hpp"
+#include "../../Common/Common.hpp"
 
 namespace Argo {
     namespace Input

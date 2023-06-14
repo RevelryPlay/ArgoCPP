@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Common.hpp"
+#include "../../Common/Common.hpp"
 #include "Graphics/OpenGL/Camera.hpp"
 #include "Graphics/OpenGL/ShaderProgram.hpp"
 

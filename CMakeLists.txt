@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.24)
 # Only set the cxx_standard if it is not set by someone else
 if (NOT DEFINED CMAKE_CXX_STANDARD)
     set(CMAKE_CXX_STANDARD 23)
-endif()
+endif ()
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
@@ -27,28 +27,27 @@ project(
 configure_file(ArgoConfig.h.in ArgoConfig.h ESCAPE_QUOTES)
 
 # Include any project source files
-if (WIN32)
-    file(GLOB_RECURSE CPP_SOURCES
-        "${PROJECT_SOURCE_DIR}/src/Windows/main.cpp"
+file(GLOB_RECURSE COMMON_CPP_SOURCES
+        "${PROJECT_SOURCE_DIR}/src/Common/main.cpp"
         "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
         "${PROJECT_SOURCE_DIR}/src/Common/**/*.hpp"
+        )
+
+file(GLOB_RECURSE WIN_CPP_SOURCES
         "${PROJECT_SOURCE_DIR}/src/Windows/**/*.cpp"
         "${PROJECT_SOURCE_DIR}/src/Windows/**/*.hpp"
         )
-elseif(APPLE)
-    file(GLOB_RECURSE CPP_SOURCES
-            "${PROJECT_SOURCE_DIR}/src/mac/main.cpp"
-            "${PROJECT_SOURCE_DIR}/src/Common/**/*.cpp"
-            "${PROJECT_SOURCE_DIR}/src/Common/**/*.hpp"
-            "${PROJECT_SOURCE_DIR}/src/Mac/**/*.cpp"
-            "${PROJECT_SOURCE_DIR}/src/Mac/**/*.hpp"
-            )
-endif()
 
-include_directories(${PROJECT_NAME}
-        include
-        include/Utilities
+file(GLOB_RECURSE MAC_CPP_SOURCES
+        "${PROJECT_SOURCE_DIR}/src/Mac/**/*.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Mac/**/*.hpp"
         )
+
+if (WIN32)
+    set(CPP_SOURCES ${COMMON_CPP_SOURCES} ${WIN_CPP_SOURCES})
+elseif (APPLE)
+    set(CPP_SOURCES ${COMMON_CPP_SOURCES} ${MAC_CPP_SOURCES})
+endif ()
 
 add_executable(${PROJECT_NAME} ${CPP_SOURCES} ArgoConfig.h.in)
 
@@ -62,9 +61,9 @@ include(cmake/git.cmake)
 
 if (WIN32)
     include(cmake/win.cmake)
-elseif(APPLE)
+elseif (APPLE)
     include(cmake/mac.cmake)
-endif()
+endif ()
 
 # Link our external libraries into ${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} PUBLIC external_libs)
