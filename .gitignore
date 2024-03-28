@@ -23,7 +23,7 @@
 *.lib
 
 # Include specific prebuilt libraries
-!/lib/libArgoDraft.a
+!/lib/libArgoDraft.[a|so|dylib|lib|dll]
 
 # Executables
 *.exe

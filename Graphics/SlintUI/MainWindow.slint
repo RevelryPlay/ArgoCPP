@@ -1,0 +1,51 @@
+import { Button, HorizontalBox, VerticalBox } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    property <int> counter1: 0;
+    property <int> counter2: 0;
+
+    preferred-width: 400px;
+    preferred-height: 120px;
+    default-font-size: 18px;
+    title: "Argo";
+
+    // Declare an alias that exposes the label's text property to C++
+    in property my_label <=> label.text;
+
+    verticalBox := VerticalBox {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        spacing: 20px;
+
+        horizontalBox := HorizontalBox {
+            width: 100%;
+            height: 40px;
+            spacing: 20px;
+            padding: 0px;
+
+            Button {
+                text: "Button 1 - " + counter1;
+                width: 170px;
+                height: 100%;
+                primary: true;
+                clicked => {
+                    counter1 += 1;
+                }
+            }
+
+            Button {
+                text: "Button 2 - " + counter2;
+                width: 170px;
+                height: 100%;
+                clicked => {
+                    counter2 += 1;
+                }
+            }
+        }
+
+        label := Text {
+            text: "Hello, world";
+        }
+    }
+}
