@@ -25,19 +25,26 @@ SET(OPTS_USE_VULKAN OFF) # Incomplete
 # SET(USE_DX OFF) # Not present at this time
 
 # Slint UI
-SET(OPTS_USE_SLINT ON) # Prototype UI
+SET(OPTS_USE_SLINT OFF) # Prototype UI
 
 # End of current options
 
 
-# Force one of the pipelines to be active
-# This is temporary as there will also be a console only pipeline
-if (NOT OPTS_USE_OPENGL AND NOT OPTS_USE_VULKAN)
-    SET(USE_OPENGL ON)
+# Force one and only one of the pipelines to be active
+# This is temporary as there will also be a console only pipeline and the ability to have multiple pipelines active is planned
+if ((NOT OPTS_USE_OPENGL AND NOT OPTS_USE_VULKAN) OR
+(OPTS_USE_OPENGL AND OPTS_USE_VULKAN))
+    SET(OPTS_USE_OPENGL ON)
+    SET(OPTS_USE_VULKAN OFF)
 endif ()
 
 add_library(
         ${PROJECT_NAME} STATIC
+)
+
+TARGET_SOURCES(
+        ${PROJECT_NAME} PRIVATE
+        include/Renderer.hpp
 )
 
 if (OPTS_USE_OPENGL)
@@ -59,6 +66,20 @@ if (OPTS_USE_OPENGL)
 
     find_package(Stb REQUIRED)
     target_include_directories(${PROJECT_NAME} PRIVATE ${Stb_INCLUDE_DIR})
+
+    TARGET_SOURCES(
+            ${PROJECT_NAME} PRIVATE
+            OpenGL/Renderer.cpp
+    )
+endif ()
+
+if (OPTS_USE_VULKAN)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE OPTS_USE_VULKAN)
+
+    TARGET_SOURCES(
+            ${PROJECT_NAME} PRIVATE
+            Vulkan/Renderer.cpp
+    )
 endif ()
 
 if (OPTS_USE_SLINT)
@@ -66,7 +87,7 @@ if (OPTS_USE_SLINT)
 
     TARGET_SOURCES(
             ${PROJECT_NAME} PRIVATE
-            SlintUI/Renderer.cpp include/Renderer.hpp
+            SlintUI/Renderer.cpp
     )
 
     include(FetchContent)
@@ -86,8 +107,8 @@ if (OPTS_USE_SLINT)
             SlintUI/GLWindow.slint
             NAMESPACE Argo::Graphics)
     # On Windows, copy the Slint DLL next to the application binary so that it's found.
-    if (WIN32)
-        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND}
-                -E copy $<TARGET_RUNTIME_DLLS:argo-graphics> $<TARGET_FILE_DIR:argo-graphics> COMMAND_EXPAND_LISTS)
-    endif ()
+    #    if (WIN32)
+    #        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND}
+    #                -E copy $<TARGET_RUNTIME_DLLS:argo-graphics> $<TARGET_FILE_DIR:argo-graphics> COMMAND_EXPAND_LISTS)
+    #    endif ()
 endif ()

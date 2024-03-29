@@ -38,8 +38,7 @@ configure_file(ArgoConfig.h.in ArgoConfig.h ESCAPE_QUOTES)
 add_executable(${PROJECT_NAME}
         ArgoConfig.h.in
         src/main.cpp
-        src/Demo.cpp
-        src/Demo.hpp
+        src/Demo.cpp src/Demo.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
