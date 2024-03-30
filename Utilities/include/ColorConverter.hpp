@@ -1,8 +1,9 @@
 #ifndef COLORCONVERTER_HPP
 #define COLORCONVERTER_HPP
 
-#include "../Core/include/Types/CommonColor.hpp"
-#include <iostream>
+#include "../../Core/include/Types/CommonColor.hpp"
+#include "../../Core/include/Types/Vec4.hpp"
+
 #include <string>
 
 namespace Argo::Utilities {
