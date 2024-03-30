@@ -3,7 +3,7 @@
 
 namespace Argo {
 struct Demo {
-    void Run();
+    static void Run();
 
 };
 }  // namespace Argo
