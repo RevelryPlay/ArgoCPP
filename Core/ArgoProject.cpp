@@ -1,4 +1,6 @@
 #include "include/ArgoProject.hpp"
+
+#include <algorithm>
 #include <string>
 #include <utility>
 #include <vector>
@@ -21,25 +23,47 @@ Project::Project( std::string _name,
 
 void Project::AddAsset( const std::string &type, const std::string &id, const std::string &path ) {
     if ( type == "image" ) {
-        assets.images.emplace_back( id, path, 0 );
-    } else if ( type == "font" ) {
-        assets.fonts.emplace_back( id, path, 0 );
-    } else if ( type == "scene" ) {
-        assets.scenes.emplace_back( id, path, 0 );
-    } else if ( type == "script" ) {
-        assets.scripts.emplace_back( id, path, 0 );
+        if ( !assets.images.contains( id ) ) {
+            assets.images.insert( { id, Asset{ id, path, 0 } } );
+        }
+    }
+    if ( type == "font" ) {
+        if ( !assets.fonts.contains( id ) ) {
+            assets.fonts.insert( { id, Asset{ id, path, 0 } } );
+        }
+    }
+    if ( type == "scene" ) {
+        if ( !assets.scenes.contains( id ) ) {
+            assets.scenes.insert( { id, Asset{ id, path, 0 } } );
+        }
+    }
+    if ( type == "script" ) {
+        if ( !assets.scripts.contains( id ) ) {
+            assets.scripts.insert( { id, Asset{ id, path, 0 } } );
+        }
     }
 }
 
 void Project::RemoveAsset( const std::string &type, const std::string &id ) {
     if ( type == "image" ) {
-        std::erase_if( assets.images, [ id ]( const Asset &asset ) { return asset.id == id; } );
-    } else if ( type == "font" ) {
-        std::erase_if( assets.fonts, [ id ]( const Asset &asset ) { return asset.id == id; } );
-    } else if ( type == "scene" ) {
-        std::erase_if( assets.scenes, [ id ]( const Asset &asset ) { return asset.id == id; } );
-    } else if ( type == "script" ) {
-        std::erase_if( assets.scripts, [ id ]( const Asset &asset ) { return asset.id == id; } );
+        if ( assets.images.contains( id ) ) {
+            assets.images.erase( id );
+        }
+    }
+    if ( type == "font" ) {
+        if ( assets.fonts.contains( id ) ) {
+            assets.fonts.erase( id );
+        }
+    }
+    if ( type == "scene" ) {
+        if ( assets.scenes.contains( id ) ) {
+            assets.scenes.erase( id );
+        }
+    }
+    if ( type == "script" ) {
+        if ( assets.scripts.contains( id ) ) {
+            assets.scripts.erase( id );
+        }
     }
 }
 

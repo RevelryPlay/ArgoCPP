@@ -2,9 +2,10 @@
 #define ARGOPROJECT_HPP
 
 #include <ctime>
+#include <list>
+#include <map>
 #include <string>
 #include <utility>
-#include <vector>
 
 namespace Argo::Core {
 struct Asset {
@@ -19,16 +20,16 @@ struct Asset {
 };
 
 struct Assets {
-    std::vector< Asset > images;
-    std::vector< Asset > fonts;
-    std::vector< Asset > scenes;
-    std::vector< Asset > scripts;
+    std::map< std::string, Asset > images;
+    std::map< std::string, Asset > fonts;
+    std::map< std::string, Asset > scenes;
+    std::map< std::string, Asset > scripts;
 
     Assets() {
-        images = std::vector< Asset >();
-        fonts = std::vector< Asset >();
-        scenes = std::vector< Asset >();
-        scripts = std::vector< Asset >();
+        images = std::map< std::string, Asset >();
+        fonts = std::map< std::string, Asset >();
+        scenes = std::map< std::string, Asset >();
+        scripts = std::map< std::string, Asset >();
     };
 
     // should file watchers be handled here?
@@ -36,7 +37,7 @@ struct Assets {
     // void RemoveWatcher( const std::string &id );
     //
     // private:
-    // std::vector<Watcers> watchers;
+    // std::map<std::string, Watchers> watchers;
 };
 
 struct EditorPosition {
@@ -57,7 +58,7 @@ struct OpenEditor {
 };
 
 struct Settings {
-    std::vector< OpenEditor > openEditors;
+    std::list< OpenEditor > openEditors;
     std::string theme = "default";
     std::string lang = "en";
     bool autosave = true;
