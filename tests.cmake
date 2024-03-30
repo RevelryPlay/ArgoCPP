@@ -12,12 +12,18 @@ if (BUILD_TESTING)
 
     target_sources(${PROJECT_NAME}-tests PRIVATE
             Core/ArgoProject.cpp Core/include/ArgoProject.hpp
-            Core/ArgoProject.tests.cpp
+            Core/ArgoProjectTests.cpp
+
+            Core/Types/CommonColor.cpp Core/include/Types/CommonColor.hpp
+            Core/include/Types/Vec4.hpp
+
+            Utilities/ColorConverter.cpp Utilities/include/ColorConverter.hpp
+            Utilities/ColorConverterTests.cpp
     )
 
     target_include_directories(${PROJECT_NAME}-tests PUBLIC ${PROJECT_BINARY_DIR})
 
-    target_compile_definitions(${PROJECT_NAME}-tests PRIVATE OPTS_USE_OPENGL)
+#    target_compile_definitions(${PROJECT_NAME}-tests PRIVATE OPTS_USE_OPENGL)
 
 #    find_package(OpenGL REQUIRED)
 #    target_link_libraries(${PROJECT_NAME}-tests PRIVATE OpenGL::GL)

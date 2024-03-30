@@ -16,6 +16,11 @@ project(
 
 add_library(
         ${PROJECT_NAME} STATIC
-        ArgoProject.cpp
-        include/ArgoProject.hpp
+        ArgoProject.cpp include/ArgoProject.hpp
+
+        Types/CommonColor.cpp include/Types/CommonColor.hpp
+        include/Types/Vec4.hpp
+        include/Types/Vertex.hpp
 )
+
+include(tests.cmake)

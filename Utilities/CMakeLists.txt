@@ -16,4 +16,7 @@ project(
 
 add_library(
         ${PROJECT_NAME} STATIC
+        ColorConverter.cpp include/ColorConverter.hpp
 )
+
+include(tests.cmake)

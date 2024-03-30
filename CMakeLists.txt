@@ -55,7 +55,7 @@ add_subdirectory(Core)
 add_subdirectory(Graphics)
 #add_subdirectory(Networking)
 #add_subdirectory(Scripting)
-#add_subdirectory(Utilities)
+add_subdirectory(Utilities)
 
 add_library(ArgoDraft STATIC IMPORTED)
 if (WIN32)
@@ -75,9 +75,9 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
         ArgoGraphics
 #        ArgoNetworking
 #        ArgoScripting
-#        ArgoUtilities
+        ArgoUtilities
 
         ArgoDraft
 )
 
-include(ArgoTests.cmake)
+include(tests.cmake)
