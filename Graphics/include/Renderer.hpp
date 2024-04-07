@@ -4,7 +4,10 @@
 namespace Argo::Graphics {
 
 struct Renderer {
-    static void render();
+    static int render();
+
+private:
+    static void glfwErrorCallback(int error, const char* description);
 };
 
 }
